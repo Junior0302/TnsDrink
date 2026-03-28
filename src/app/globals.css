@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: var(--font-inter);
+  --font-playfair: var(--font-playfair);
+  --font-notcher: var(--font-notcher);
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-drop: drop 2s infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes drop {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(30px, 20px); }
+}
+
+@keyframes pulseLine {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes tnsFloat {
+  0%, 100% { transform: translate3d(0, -8px, 0); }
+  50% { transform: translate3d(0, 8px, 0); }
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --background: 250 250 250;
+    --foreground: 15 23 42;
+    --font-notcher: Balenia;
+    --tns-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --tns-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --tns-dur-200: 200ms;
+    --tns-dur-350: 350ms;
+    --tns-dur-600: 600ms;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased cursor-none;
+    /* Custom Minimal Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      @apply bg-slate-200/50 rounded-full hover:bg-slate-300/80 transition-colors;
+    }
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-notcher), var(--font-barlow-condensed), var(--font-inter), ui-sans-serif, system-ui;
+    letter-spacing: 0.06em;
+    line-height: 1.05;
+  }
+
+  p {
+    font-family: var(--font-inter), ui-sans-serif, system-ui;
+  }
+
+  .product-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-accent, rgba(255, 255, 255, 0.35)) transparent;
+  }
+
+  .product-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .product-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .product-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), var(--scroll-accent, rgba(255, 255, 255, 0.35)));
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 18px var(--scroll-accent, rgba(255, 255, 255, 0.25));
+  }
+
+  .product-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.30), var(--scroll-accent, rgba(255, 255, 255, 0.45)));
+  }
+
+  /* Force hide system cursor on all interactive elements */
+  a, button, [role="button"], .cursor-pointer {
+    cursor: none !important;
+  }
+
+  /* Premium Selection Style */
+  ::selection {
+    @apply bg-violet-600/20 text-violet-900;
+  }
+}
+
+@layer utilities {
+  .tns-float {
+    animation: tnsFloat 3s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .tns-title {
+    color: transparent;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.26));
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 14px 48px rgba(0, 0, 0, 0.55));
+  }
+
+  .tns-title-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
+  }
+
+  .tns-body {
+    color: rgba(255, 255, 255, 0.78);
+    text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tns-float {
+    animation: none !important;
+  }
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+}
+
+.glass-button {
+  @apply bg-white/5 backdrop-blur-sm border border-white/20 hover:bg-white/10 transition-all duration-300;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Animation Utility Classes */
+.animate-drop {
+  animation: drop 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  color: transparent;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw 1s ease-out forwards;
+}
+
+.text-stroke-strong {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+  color: transparent;
+}
