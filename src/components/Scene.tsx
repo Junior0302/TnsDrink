@@ -328,34 +328,6 @@ export default function Scene() {
             ))}
           </div>
 
-          <div data-home-reveal className="hidden min-[1100px]:flex absolute right-[clamp(16px,3vw,48px)] bottom-[calc(32px+clamp(14px,3vh,26px))] z-40 flex-row items-center gap-2 pointer-events-none">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="h-[14px] w-[14px] text-white/22"
-              aria-hidden="true"
-            >
-              <path d="M14 7l-5 5 5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-
-            <div className="relative h-[34px] w-[22px] rotate-90 rounded-full border border-white/25 bg-black/10 backdrop-blur-sm overflow-hidden">
-              <span className="absolute left-1/2 top-[6px] -translate-x-1/2 h-[6px] w-[6px] rounded-full bg-white/45 animate-drop" />
-            </div>
-
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="h-[14px] w-[14px] text-white/22"
-              aria-hidden="true"
-            >
-              <path d="M10 7l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-
           <div data-home-reveal className="hidden min-[1100px]:flex absolute right-[clamp(16px,3vw,48px)] top-1/2 -translate-y-1/2 z-40 pointer-events-none">
             <div className="relative text-right text-[clamp(11px,1vw,13px)] leading-[1.65] text-white/80 max-w-[clamp(160px,16vw,240px)] rounded-xl bg-black/10 backdrop-blur-[10px] border border-white/10 px-4 py-3">
               <svg
