@@ -331,6 +331,10 @@ export default function Intro({ onComplete, startAnimation }: IntroProps) {
             </svg>
           </span>
         </button>
+
+        <div className="absolute -bottom-8 md:-bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-white/40 font-medium">
+          Created by Genesis Connect
+        </div>
       </div>
       
       <footer className="absolute bottom-0 left-0 w-full z-30 pointer-events-auto">
