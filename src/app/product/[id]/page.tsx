@@ -209,7 +209,7 @@ export default function ProductPage() {
 
     const observer = Observer.create({
       target: containerRef.current,
-      type: "wheel,touch",
+      type: "wheel", // Removed touch to allow native vertical scrolling on mobile
       wheelSpeed: 1,
       onUp: () => {
         if (isAnimatingRef.current || isModalOpen) return;
@@ -281,17 +281,39 @@ export default function ProductPage() {
       </header>
 
       <section className="relative z-10 flex-1 overflow-hidden">
+        {/* Mobile Navigation Arrows */}
+        <div className="lg:hidden absolute top-[40%] -translate-y-1/2 left-2 right-2 flex justify-between z-[60] pointer-events-none">
+          <button
+            type="button"
+            onClick={() => gotoSlide(indexRef.current - 1)}
+            disabled={currentIndex === 0}
+            className="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white transition-opacity disabled:opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            aria-label="Previous product"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => gotoSlide(indexRef.current + 1)}
+            disabled={currentIndex === STORY_CONTENT.length - 1}
+            className="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white transition-opacity disabled:opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            aria-label="Next product"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+
         {STORY_CONTENT.map((product, idx) => (
           <div
             key={product.id}
             ref={(el) => {
               slidesRef.current[idx] = el;
             }}
-            className="absolute inset-0 w-full h-full opacity-0 pointer-events-none"
+            className="absolute inset-0 w-full h-full opacity-0 pointer-events-none overflow-y-auto overflow-x-hidden lg:overflow-hidden"
           >
-            <div className="mx-auto w-full max-w-[1200px] h-full px-4 sm:px-5 md:px-10 pt-[calc(env(safe-area-inset-top)+60px)] pb-[calc(env(safe-area-inset-bottom)+80px)] lg:pb-0 lg:pt-[calc(env(safe-area-inset-top)+66px)] flex flex-col">
-              <div className="flex-1 flex items-center justify-center w-full h-full">
-                <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center justify-evenly w-full h-full lg:h-auto py-2 lg:py-0">
+            <div className="mx-auto w-full max-w-[1200px] min-h-full px-4 sm:px-5 md:px-10 pt-[calc(env(safe-area-inset-top)+80px)] pb-[calc(env(safe-area-inset-bottom)+120px)] lg:pb-0 lg:pt-[calc(env(safe-area-inset-top)+66px)] flex flex-col">
+              <div className="flex-1 flex items-center justify-center w-full min-h-full">
+                <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center justify-evenly w-full h-auto py-6 lg:py-0">
                   <div className="flex justify-center w-full lg:justify-start items-center">
                     <div data-product-image className="relative w-[clamp(160px,42vw,280px)] h-[clamp(190px,40vh,320px)] lg:w-[clamp(260px,24vw,400px)] lg:h-[clamp(300px,42vh,500px)] max-h-[36svh] lg:max-h-none flex-shrink-0">
 
