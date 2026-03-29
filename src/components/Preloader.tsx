@@ -98,6 +98,10 @@ export default function Preloader({ onComplete, onStartExit }: { onComplete: () 
       <p className="mt-6 text-[10px] uppercase tracking-[0.4em] font-medium opacity-60 animate-pulse">
         Loading Experience
       </p>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-white/40 font-medium">
+        Created by Genesis Connect
+      </div>
     </div>
   );
 }
