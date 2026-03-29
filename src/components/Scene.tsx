@@ -272,12 +272,19 @@ export default function Scene() {
         className="fixed top-0 left-0 z-[100] w-full pointer-events-auto"
       >
         <div className="flex items-center justify-between px-[clamp(16px,4vw,40px)] py-[clamp(12px,2.5vw,28px)]">
-          <Link href="/" className="inline-flex items-center gap-3">
+          <button 
+            onClick={() => {
+              setShowIntro(true);
+              setIntroReady(true);
+              window.history.replaceState({}, '', '/');
+            }}
+            className="inline-flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+          >
             <span className="rounded-full bg-white h-[clamp(6px,0.8vw,10px)] w-[clamp(6px,0.8vw,10px)]" />
             <span className="text-[clamp(10px,1.2vw,14px)] uppercase tracking-[0.12em] text-white">
               TNS DIGITAL
             </span>
-          </Link>
+          </button>
 
           <button
             type="button"
