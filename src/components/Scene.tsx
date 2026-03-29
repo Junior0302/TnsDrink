@@ -361,7 +361,7 @@ export default function Scene() {
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
                 <div className="px-5 md:px-8 py-3">
-                  <div className="grid grid-cols-2 md:grid-cols-3 items-center gap-y-2 gap-x-4 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.2em] text-white/75">
+                  <div className="flex flex-col sm:flex-row justify-between md:grid md:grid-cols-3 items-center gap-y-3 gap-x-4 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.2em] text-white/75">
                     <Link
                       href="/?skipIntro=true"
                       className="justify-self-start text-white/90 hover:text-white transition-colors whitespace-nowrap font-bold tracking-[0.22em]"
