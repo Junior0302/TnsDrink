@@ -281,25 +281,29 @@ export default function ProductPage() {
       </header>
 
       <section className="relative z-10 flex-1 overflow-hidden">
-        {/* Mobile Navigation Arrows */}
-        <div className="lg:hidden absolute top-[40%] -translate-y-1/2 left-2 right-2 flex justify-between z-[60] pointer-events-none">
+        {/* Mobile Navigation Edge Zones */}
+        <div className="lg:hidden absolute inset-y-[20%] left-0 right-0 flex justify-between z-[60] pointer-events-none">
           <button
             type="button"
             onClick={() => gotoSlide(indexRef.current - 1)}
             disabled={currentIndex === 0}
-            className="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white transition-opacity disabled:opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="pointer-events-auto h-full w-[12vw] max-w-[50px] flex items-center justify-start transition-opacity disabled:opacity-0 focus-visible:outline-none group"
             aria-label="Previous product"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+            <div className="animate-pulse opacity-30 group-active:opacity-60 flex items-center justify-center h-40 w-full bg-gradient-to-r from-white/30 to-transparent">
+              <svg className="w-8 h-8 text-white drop-shadow-lg -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+            </div>
           </button>
           <button
             type="button"
             onClick={() => gotoSlide(indexRef.current + 1)}
             disabled={currentIndex === STORY_CONTENT.length - 1}
-            className="pointer-events-auto w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white transition-opacity disabled:opacity-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="pointer-events-auto h-full w-[12vw] max-w-[50px] flex items-center justify-end transition-opacity disabled:opacity-0 focus-visible:outline-none group"
             aria-label="Next product"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            <div className="animate-pulse opacity-30 group-active:opacity-60 flex items-center justify-center h-40 w-full bg-gradient-to-l from-white/30 to-transparent">
+              <svg className="w-8 h-8 text-white drop-shadow-lg -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+            </div>
           </button>
         </div>
 
